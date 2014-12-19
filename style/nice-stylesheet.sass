@@ -1,0 +1,710 @@
+/* RESET */
+/* line 3, source string */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, a, big, code, em, img, small, strong, b, u, i, ul, li, form, table, tbody, tfoot, thead, tr, th, td, canvas, footer, header, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* line 11, source string */
+footer, header {
+  display: block; }
+
+/* line 14, source string */
+body {
+  line-height: 1; }
+
+/* line 17, source string */
+ol, ul {
+  list-style: none; }
+
+@mixin colors {
+  $green: "69D2E7"
+  $blue: "A7DBD8"
+  $orange: "E0E4CC"
+  $beige: "F38630"
+$white: "FA6900"
+}
+/* line 20, source string */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/*  ~~~~~~~~~~   END OF RESET   ~~~~~~~~~~  */
+/* Variables */
+/* Variables End */
+/* Animations */
+@keyframes blink {
+  /* line 29, source string */
+  0% {
+    background-color: yellow; }
+
+  /* line 32, source string */
+  50% {
+    background-color: #fffecd; }
+
+  /* line 35, source string */
+  100% {
+    background-color: yellow; } }
+
+@-webkit-keyframes blink {
+  /* line 39, source string */
+  0% {
+    background-color: yellow; }
+
+  /* line 42, source string */
+  50% {
+    background-color: #fffecd; }
+
+  /* line 45, source string */
+  100% {
+    background-color: yellow; } }
+
+@keyframes animate {
+  /* line 49, source string */
+  0% {
+    background-color: none; }
+
+  /* line 52, source string */
+  50% {
+    background-color: white; }
+
+  /* line 55, source string */
+  100% {
+    background-color: none; } }
+
+@-webkit-keyframes animate {
+  /* line 59, source string */
+  0% {
+    background-color: none; }
+
+  /* line 62, source string */
+  50% {
+    background-color: white; }
+
+  /* line 65, source string */
+  100% {
+    background-color: none; } }
+
+/* Animations end */
+/* line 69, source string */
+body {
+  background-color: white;
+  color: black; }
+
+/* line 73, source string */
+.form_container {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #999999;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000; }
+
+/* line 84, source string */
+form {
+  border: 1px solid #555555;
+  background-color: white;
+  margin: 20% auto 0 auto;
+  max-width: 350px;
+  padding: 40px 40px 40px;
+  text-align: right;
+  line-height: 180%;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
+
+/* line 95, source string */
+form#loading_screen {
+  width: 350px;
+  height: 165px;
+  line-height: 160px;
+  text-align: center;
+  background-color: #eeeeee; }
+
+/* line 101, source string */
+form .urlinput {
+  width: 230px;
+  display: inline-block;
+  text-align: left;
+  line-height: 20px;
+  margin-bottom: 10px; }
+
+/* line 107, source string */
+form input, form .urlinput {
+  padding: 2px;
+  font-size: 14px;
+  font-family: "Open Sans";
+  border: 1px solid #555555;
+  height: 20px;
+  margin-top: 5px;
+  margin-left: 5px;
+  box-shadow: inset 0 0 1px #999999;
+  -moz-box-shadow: inset 0 0 1px #999999;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; }
+
+/* line 120, source string */
+form .button {
+  border: 1px solid #555555;
+  height: 30px;
+  background-color: yellow;
+  font-family: "Open Sans";
+  font-size: inherit;
+  margin: 10px 0 0 0; }
+
+/* line 127, source string */
+form #pwfield {
+  display: none; }
+
+/* line 129, source string */
+form #pwhint {
+  display: block;
+  margin: 0px 0 -32px 0; }
+
+/* line 132, source string */
+form #ask_password {
+  display: none; }
+
+/* line 134, source string */
+form p {
+  line-height: 130%;
+  margin-bottom: 10px; }
+
+/* line 138, source string */
+#rematch {
+  display: none; }
+
+/* line 141, source string */
+#overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("/images/lupe-bg.png");
+  z-index: 1000; }
+
+/* line 150, source string */
+body {
+  width: 100%;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 120%;
+  text-align: center; }
+
+/* line 158, source string */
+h1 {
+  clear: both;
+  padding-top: 10px;
+  font-size: 28px;
+  margin: 10px; }
+
+/* line 163, source string */
+h1.index {
+  font-size: 46px; }
+
+/* line 165, source string */
+h1#names_title {
+  display: none; }
+
+/* line 168, source string */
+.header {
+  margin: 0;
+  padding: 1px 4px 1px 4px;
+  margin: 0 auto 20px auto;
+  text-align: center; }
+
+/* line 173, source string */
+.header a {
+  float: left;
+  margin-right: -130px; }
+
+/* line 176, source string */
+.header span#version {
+  float: right; }
+
+/* line 178, source string */
+.header span#version a {
+  margin: 0; }
+
+/* line 180, source string */
+.header.index {
+  margin: 15px auto 10px auto; }
+
+/* line 183, source string */
+#win_title {
+  padding: 0 3px;
+  display: none; }
+
+/* line 187, source string */
+#p1name {
+  padding: 0 3px;
+  background-color: #46d7ff; }
+
+/* line 191, source string */
+#p2name {
+  padding: 0 3px;
+  background-color: #ff5f5c; }
+
+/* line 195, source string */
+#p1name, #p2name {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+
+/* line 200, source string */
+#header_infos {
+  margin-bottom: 10px; }
+
+/* line 202, source string */
+#header_infos #move_nr {
+  padding: 0 30px 0 5px; }
+
+/* line 205, source string */
+#info_box {
+  background-color: #fffecd;
+  padding: 5px;
+  border: 1px solid #555555;
+  display: none;
+  margin: 0 auto 10px auto;
+  max-width: 400px;
+  box-shadow: 1px 1px 2px #bbbbbb;
+  -moz-box-shadow: 1px 1px 2px #bbbbbb;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; }
+
+/* line 218, source string */
+#big_field {
+  width: 500px;
+  height: 500px;
+  margin: 30px auto 10px auto; }
+
+/* line 223, source string */
+.small_field {
+  height: 80%;
+  width: 80%;
+  margin: 11% auto; }
+
+/* line 228, source string */
+.cell {
+  float: left;
+  height: 32%;
+  width: 32%; }
+
+/* line 232, source string */
+.cell.center {
+  border-left: 1px solid #555555;
+  border-right: 1px solid #555555; }
+
+/* line 235, source string */
+.cell.middle {
+  border-top: 1px solid #555555;
+  border-bottom: 1px solid #555555; }
+
+/* line 239, source string */
+.small_cell.yellow {
+  background-color: #fffecd; }
+
+/* line 241, source string */
+.small_cell.yellow.interactive {
+  cursor: pointer;
+  animation-name: blink;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-name: blink;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite; }
+
+/* line 251, source string */
+.small_cell.player1, .small_cell.player2 {
+  position: relative;
+  display: block; }
+
+/* line 254, source string */
+.small_cell.player1:after, .small_cell.player2:after, .small_cell .animator {
+  content: "";
+  width: 85%;
+  height: 85%;
+  margin: 7.5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+
+/* line 267, source string */
+.small_cell.player1:after {
+  background-color: #46d7ff; }
+
+/* line 269, source string */
+.small_cell.player2:after {
+  background-color: #ff5f5c; }
+
+/* line 271, source string */
+.small_cell.loading {
+  position: relative;
+  display: block; }
+
+/* line 274, source string */
+.small_cell.loading:after {
+  content: "";
+  background-image: url("/images/ajax-loader.gif");
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute; }
+
+/* line 287, source string */
+.animator {
+  z-index: 500;
+  animation-name: animate;
+  animation-duration: 0.3s;
+  animation-iteration-count: 3;
+  animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-name: animate;
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-iteration-count: 3; }
+
+/* line 298, source string */
+.big_cell.center {
+  border-left: 3px solid #555555;
+  border-right: 3px solid #555555; }
+
+/* line 301, source string */
+.big_cell.middle {
+  border-top: 3px solid #555555;
+  border-bottom: 3px solid #555555; }
+
+/* line 305, source string */
+.big_cell.yellow {
+  background-color: #fffecd; }
+
+/* line 307, source string */
+.big_cell.player1 {
+  background-color: #ccf5ff; }
+
+/* line 309, source string */
+.big_cell.player2 {
+  background-color: #ffdbd5; }
+
+@media (max-width: 500px) {
+  /* line 313, source string */
+  form {
+    padding: 20px; }
+  /* line 316, source string */
+  body {
+    font-size: 14px; }
+  /* line 319, source string */
+  h1 {
+    font-size: 24px; }
+  /* line 321, source string */
+  h1.index {
+    font-size: 24px; } }
+
+@keyframes eighties {
+  /* line 324, source string */
+  0% {
+    background-color: #ff9a77; }
+
+  /* line 327, source string */
+  50% {
+    background-color: #fff1b6; }
+
+  /* line 330, source string */
+  100% {
+    background-color: #ff9a77; } }
+
+@-webkit-keyframes eighties {
+  /* line 334, source string */
+  0% {
+    background-color: #ff9a77; }
+
+  /* line 337, source string */
+  50% {
+    background-color: #fff1b6; }
+
+  /* line 340, source string */
+  100% {
+    background-color: #ff9a77; } }
+
+/* line 343, source string */
+body.eighties {
+  background-color: white;
+  color: #333333; }
+
+/* line 346, source string */
+body.eighties .big_cell.yellow {
+  background-color: #fff1b6; }
+
+/* line 348, source string */
+body.eighties .big_cell.player1 {
+  background-color: #d7fffd; }
+
+/* line 350, source string */
+body.eighties .big_cell.player2 {
+  background-color: #ffe7fd; }
+
+/* line 352, source string */
+body.eighties .small_cell.player1:after {
+  background-color: #00eade; }
+
+/* line 354, source string */
+body.eighties .small_cell.player2:after {
+  background-color: #f87cf2; }
+
+/* line 356, source string */
+body.eighties .small_cell.yellow {
+  background-color: #fff1b6; }
+
+/* line 358, source string */
+body.eighties .small_cell.interactive {
+  animation-name: eighties;
+  -webkit-animation-name: eighties; }
+
+/* line 361, source string */
+body.eighties #info_box {
+  background-color: #fff1b6; }
+
+/* line 363, source string */
+body.eighties #p1name {
+  background-color: #00eade; }
+
+/* line 365, source string */
+body.eighties #p2name {
+  background-color: #f87cf2; }
+
+/* line 367, source string */
+body.eighties #info_box {
+  border: 1px solid black; }
+
+/* line 369, source string */
+body.eighties .cell.center {
+  border-left: 1px solid black;
+  border-right: 1px solid black; }
+
+/* line 372, source string */
+body.eighties .cell.middle {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+/* line 375, source string */
+body.eighties .big_cell.center {
+  border-left: 3px solid black;
+  border-right: 3px solid black; }
+
+/* line 378, source string */
+body.eighties .big_cell.middle {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black; }
+
+@keyframes dark {
+  /* line 383, source string */
+  0% {
+    background-color: #4f2e70; }
+
+  /* line 386, source string */
+  50% {
+    background-color: #321259; }
+
+  /* line 389, source string */
+  100% {
+    background-color: #4f2e70; } }
+
+@-webkit-keyframes dark {
+  /* line 393, source string */
+  0% {
+    background-color: #4f2e70; }
+
+  /* line 396, source string */
+  50% {
+    background-color: #321259; }
+
+  /* line 399, source string */
+  100% {
+    background-color: #4f2e70; } }
+
+/* line 402, source string */
+body.dark {
+  background-color: #151515;
+  color: #d0d2d1; }
+
+/* line 405, source string */
+body.dark .big_cell.yellow {
+  background-color: #321259; }
+
+/* line 407, source string */
+body.dark .big_cell.player1 {
+  background-color: #001261; }
+
+/* line 409, source string */
+body.dark .big_cell.player2 {
+  background-color: #54121a; }
+
+/* line 411, source string */
+body.dark .small_cell.player1:after {
+  background-color: #3341ff; }
+
+/* line 413, source string */
+body.dark .small_cell.player2:after {
+  background-color: #dc1833; }
+
+/* line 415, source string */
+body.dark .small_cell.yellow {
+  background-color: #321259; }
+
+/* line 417, source string */
+body.dark .small_cell.interactive {
+  animation-name: dark;
+  -webkit-animation-name: dark; }
+
+/* line 420, source string */
+body.dark #info_box {
+  background-color: #321259; }
+
+/* line 422, source string */
+body.dark #p1name {
+  background-color: #3341ff; }
+
+/* line 424, source string */
+body.dark #p2name {
+  background-color: #dc1833; }
+
+/* line 426, source string */
+body.dark #info_box {
+  border: 1px solid #d0d2d1; }
+
+/* line 428, source string */
+body.dark .cell.center {
+  border-left: 1px solid #d0d2d1;
+  border-right: 1px solid #d0d2d1; }
+
+/* line 431, source string */
+body.dark .cell.middle {
+  border-top: 1px solid #d0d2d1;
+  border-bottom: 1px solid #d0d2d1; }
+
+/* line 434, source string */
+body.dark .big_cell.center {
+  border-left: 3px solid #d0d2d1;
+  border-right: 3px solid #d0d2d1; }
+
+/* line 437, source string */
+body.dark .big_cell.middle {
+  border-top: 3px solid #d0d2d1;
+  border-bottom: 3px solid #d0d2d1; }
+
+@keyframes plus {
+  /* line 442, source string */
+  0% {
+    background-color: #d4f86b; }
+
+  /* line 445, source string */
+  50% {
+    background-color: #acc466; }
+
+  /* line 448, source string */
+  100% {
+    background-color: #d4f86b; } }
+
+@-webkit-keyframes plus {
+  /* line 452, source string */
+  0% {
+    background-color: #d4f86b; }
+
+  /* line 455, source string */
+  50% {
+    background-color: #acc466; }
+
+  /* line 458, source string */
+  100% {
+    background-color: #d4f86b; } }
+
+/* line 461, source string */
+body.plus {
+  background-color: #f8e1c9;
+  color: black; }
+
+/* line 464, source string */
+body.plus .big_cell.yellow {
+  background-color: #acc466; }
+
+/* line 466, source string */
+body.plus .big_cell.player1 {
+  background-color: #97e3f3; }
+
+/* line 468, source string */
+body.plus .big_cell.player2 {
+  background-color: #e59389; }
+
+/* line 470, source string */
+body.plus .small_cell.player1:after {
+  background-color: #38b1ca; }
+
+/* line 472, source string */
+body.plus .small_cell.player2:after {
+  background-color: #cb4b39; }
+
+/* line 474, source string */
+body.plus .small_cell.yellow {
+  background-color: #acc466; }
+
+/* line 476, source string */
+body.plus .small_cell.interactive {
+  animation-name: plus;
+  -webkit-animation-name: plus; }
+
+/* line 479, source string */
+body.plus #info_box {
+  background-color: #acc466; }
+
+/* line 481, source string */
+body.plus #p1name {
+  background-color: #38b1ca; }
+
+/* line 483, source string */
+body.plus #p2name {
+  background-color: #cb4b39; }
+
+/* line 485, source string */
+body.plus #info_box {
+  border: 1px solid black; }
+
+/* line 487, source string */
+body.plus .cell.center {
+  border-left: 1px solid black;
+  border-right: 1px solid black; }
+
+/* line 490, source string */
+body.plus .cell.middle {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+/* line 493, source string */
+body.plus .big_cell.center {
+  border-left: 3px solid black;
+  border-right: 3px solid black; }
+
+/* line 496, source string */
+body.plus .big_cell.middle {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black; }

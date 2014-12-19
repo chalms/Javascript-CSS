@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>three.js webgl - custom attributes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="debug.js"></script>
+    </head>
+    <body>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r57/three.min.js"></script>
+    <script type='application/javascript'>
+
+
+      var Pyramid = function () {
+        this.frame = {
+          width: window.innerWidth,
+          height: window.innerHeight
+        };
+        this.base = 2.0;
+        this.Ce = 1.0;
+        this.points = [];
+        this.vectors = [];
+        this.max = 7.0;
+        this.level = 3.0;
+      }
+
+
+      Pyramid.prototype.objects = function (name, obj) {
+        this.objects[name] = obj;
+      };
+
+      Pyramid.prototype.AddPoint = function (point) {
+        this.points.add(point);
+      };
+
+      Pyramid.prototype.getPoint = function (index) {
+        return this.points[index];
+      };
+
+      Pyramid.prototype.setBounds = function (b) {
+        this.bounds = b;
+      };
+
+      Pyramid.prototype.getBounds = function () {
+        return this.bounds;
+      };
+
+      Pyramid.prototype.setFrame = function (f) {
+        this.frame = f;
+      };
+
+      Pyramid.prototype.getFrame = function () {
+        return this.frame;
+      };
+
+      Pyramid.prototype.getLowerBound = function (z) {
+          if (z < 2) throw new Error("Cannot get expansion rate for values less than two!");
+          return (1.0/z) * ((z < 0) ? -1 : 1) ;
+      };
+
+      Pyramid.prototype.getUpperBound = function (z) {
+          if (z < 2) throw new Error("Cannot get expansion rate for values less than two!");
+          return (1 - this.getLowerBound(z));
+      };
+
+      Pyramid.prototype.getSpan = function (z) {
+        return (this.getUpperBound(z) - this.getLowerBound(z));
+      };
+
+      Pyramid.prototype.getExpansion = function (z) {
+        return (this.getSpan(z) - this.getSpan(z-1));
+      };
+
+      Pyramid.prototype.getExpansionRate = function (z) {
+        return (this.Ce)*(this.getExpansion(z) / this.getSpan(z));
+      };
+
+      Pyramid.prototype.getZ = function (z) {
+        return 0;
+      };
+
+      Pyramid.prototype.nextLevel = function (caller, cb) {
+        _this = this;
+        var val = _this.level;
+        _this.level += 1;
+        _this.buildLevel(val);
+        if (_this.level < _this.max) {
+          _this.nextLevel(caller, cb);
+        } else if (_this.level === this.max) {
+          cb.call(caller);
+        }
+      };
+
+      Pyramid.prototype.buildLevel = function (k) {
+        var x = this.getSpan(k) * this.getFrame().width;
+        var y = this.getExpansion(k) * this.getFrame().height;
+
+        var rectShape = new THREE.Shape();
+        rectShape.moveTo( 0,0 );
+        rectShape.lineTo( 0, x);
+        rectShape.lineTo( y, x );
+        rectShape.lineTo( y, 0 );
+        rectShape.lineTo( 0, 0 );
+
+        var rectGeom = new THREE.ShapeGeometry( rectShape );
+        var rectMesh = new THREE.Mesh( rectGeom, new THREE.MeshBasicMaterial( {
+            color: 0x333F47,
+            wireframe: true,
+            wireframeLinewidth: 2
+        }));
+
+        scene.add(rectMesh);
+      };
+
+      var pyramid = new Pyramid();
+
+      var geometry = new THREE.Geometry();
+      var mesh, scene, camera, renderer, controls;
+
+      // var m    = new THREEx.Text('THREEx');
+      // scene.add(m);
+
+      function animate () {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+        //controls.update();
+      };
+
+
+      function init() {
+
+        scene = new THREE.Scene();
+        var WIDTH = window.innerWidth,
+          HEIGHT = window.innerHeight;
+
+        renderer = new THREE.WebGLRenderer({antialias:true});
+        renderer.setSize(WIDTH, HEIGHT);
+        document.body.appendChild(renderer.domElement);
+
+        camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 0.1, 20000);
+        camera.position.set(0,0,500);
+        scene.add(camera);
+
+        window.addEventListener('resize', function() {
+          var WIDTH = window.innerWidth,
+              HEIGHT = window.innerHeight;
+          renderer.setSize(WIDTH, HEIGHT);
+          camera.aspect = WIDTH / HEIGHT;
+          camera.updateProjectionMatrix();
+        });
+
+        pyramid = new Pyramid();
+
+        renderer.setClearColorHex(0x333F47, 1);
+        var light = new THREE.PointLight(0xffffff);
+        light.position.set(-100,200,100);
+        scene.add(light);
+
+        var _this = this;
+
+        pyramid.nextLevel(_this, function() {
+          console.log("done!");
+        });
+
+
+
+       // controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        // var materials = {
+        //
+        // };
+      }
+
+
+      init();
+
+
+
+    </script>
+  </body>
+</html>

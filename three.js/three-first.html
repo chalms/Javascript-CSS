@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background-color: #ffffff;
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r57/three.min.js"></script>
+    <script>
+
+      var camera, scene, renderer;
+      var geometry, material, mesh;
+
+
+      var THREEx  = THREEx  || {}
+
+
+      THREEx.Text = function(text, options){
+        options = options || {
+          font :  "serif",
+          weight    : "bold",
+          size    : 1,
+          height    : 0.4,
+        }
+
+        // create the tGeometry
+        var geometry  = new THREE.TextGeometry(text, options)
+
+        // center the geometry
+        // - THREE.TextGeometry isnt centered for unknown reasons. all other geometries are centered
+        geometry.computeBoundingBox();
+        var center  = new THREE.Vector3();
+        center.x  = (geometry.boundingBox.max.x - geometry.boundingBox.min.x) / 2
+        center.y  = (geometry.boundingBox.max.y - geometry.boundingBox.min.y) / 2
+        center.z  = (geometry.boundingBox.max.z - geometry.boundingBox.min.z) / 2
+        geometry.vertices.forEach(function(vertex){
+          vertex.sub(center)
+        })
+
+        // create a mesh with it
+        var material  = new THREE.MeshNormalMaterial()
+        var mesh  = new THREE.Mesh(geometry, material)
+        // return mesh
+        return mesh
+      };
+
+      var init = function () {
+
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        document.body.appendChild( renderer.domElement );
+
+        camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 1000 );
+        camera.position.z = 600;
+
+        scene = new THREE.Scene();
+
+
+
+
+        geometry = new THREE.CubeGeometry( 40, -300, 200 );
+        material = new THREE.MeshBasicMaterial( { color: 0x000fff, wireframe: true, wireframeLinewidth: 3 } );
+        geometry2 = new THREE.CubeGeometry( 40, 400, 600 );
+        material2 = new THREE.MeshBasicMaterial( { color: 0x0f000f, wireframe: false, wireframeLinewidth: 3 } );
+
+        mesh = new THREE.Mesh( geometry, material );
+        mesh2 = new THREE.Mesh( geometry2, material2 );
+        m = new THREEx.Text("Chalmee");
+
+        scene.add(mesh);
+        scene.add(mesh2);
+        scene.add(m);
+      }
+
+
+      var animate = function () {
+
+        requestAnimationFrame( animate );
+
+        var x = mesh.rotation.x ;
+        var y = mesh2.rotation.y ;
+
+        mesh2.rotation.y = (y * (Math.random() - 0.5));
+        mesh.rotation.x = 0.1 * Date.now() * 0.0005 ;
+        mesh.rotation.y = Date.now() * 0.001;
+
+
+        mesh2.rotation.y = Date.now() * 0.001;
+        mesh2.rotation.x = -1 * mesh2.rotation.y;
+        mesh2.rotation.z = mesh.rotation.y/mesh2.rotation.x*-4;
+        renderer.render( scene, camera );
+
+      }
+
+      init();
+      animate();
+
+    </script>
+  </body>
+</html>
